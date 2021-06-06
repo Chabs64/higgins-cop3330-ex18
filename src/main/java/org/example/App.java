@@ -29,10 +29,39 @@ Ensure that you allow upper or lowercase values for C and F.
 Use as few output statements as possible and avoid repeating output strings.
  */
 
-public class App 
+import java.util.Locale;
+import java.util.Scanner;
+
+public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        Scanner in = new Scanner(System.in);
+
+        System.out.println("Press C to convert from Fahrenheit to Celsius.\n" +
+                "Press F to convert from Celsius to Fahrenheit.");
+
+        System.out.println("Your choice: ");
+        String Type = in.nextLine().toUpperCase(Locale.ROOT);
+
+        double newTemp;
+        double currentTemp;
+
+        if(Type.equals("C"))
+        {
+            System.out.println("Please enter the temperature in Fahrenheit: ");
+            currentTemp = in.nextDouble();
+            newTemp = (currentTemp*9/5) + 32;
+            newTemp =(currentTemp-32)*5/9;
+            System.out.println("The temperature in Celsius is "+newTemp+".");
+        }
+        else if(Type.equals("F"))
+        {
+            System.out.println("Please enter the temperature in Celsius: ");
+            currentTemp = in.nextDouble();
+            newTemp = (currentTemp*9/5) + 32;
+            System.out.println("The temperature in Fahrenheit is "+newTemp+".");
+        }
+
     }
 }
